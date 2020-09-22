@@ -1,0 +1,2998 @@
+[
+    {
+        "taskScenario": {
+            "version": "2.6",
+            "metadata": {
+                "scenario_name": "book_hotel",
+                "update_time": "2020-8-12 11:24:10",
+                "update_user": "a4803aa5a3374938adba15eeb42e2923",
+                "scenario_id": "295fc735-8c16-4c45-a405-d26d77f3a375",
+                "description": ""
+            },
+            "setting": {
+                "sys_scenario_dialogue_cnt_limit": 30,
+                "sys_node_dialogue_cnt_limit": 3
+            },
+            "global_edges": [],
+            "global_tts_info": {
+                "bargein": false,
+                "interrupt_speech": "",
+                "silence": {
+                    "silence_waitingduration": "5000",
+                    "silence_switch": true,
+                    "silence_waitingspeech": "喂，您还在吗？请问还有什么可以帮助您吗？",
+                    "silence_limit": "3",
+                    "silence_stopspeech": "不好意思，您太久没有说话了，我这边先挂机了，如果有其他问题，请您重新拨打，谢谢"
+                },
+                "vad_time": "500",
+                "tts_url": "http://",
+                "vsp_setting": "暂无参数"
+            },
+            "msg_confirm": [],
+            "nodes": [
+                {
+                    "node_id": "0",
+                    "description": "Exit",
+                    "node_type": "exit"
+                },
+                {
+                    "node_id": "15560167299200",
+                    "node_type": "entry",
+                    "description": "入口节点",
+                    "edges": [
+                        {
+                            "to_node_id": null,
+                            "edge_type": "hidden",
+                            "condition_rules": [],
+                            "actions": [
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "sys_node_dialogue_cnt",
+                                    "val": 0
+                                },
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "sys_scenario_dialogue_cnt",
+                                    "val": 0
+                                },
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "sys_scenario_dialogue_cnt_limit",
+                                    "val": 30
+                                },
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "sys_node_dialogue_cnt_limit",
+                                    "val": 3
+                                }
+                            ],
+                            "edge_name": "hidden",
+                            "edge_id": "8634767210653"
+                        },
+                        {
+                            "to_node_id": null,
+                            "edge_type": "hidden",
+                            "condition_rules": [],
+                            "actions": [],
+                            "edge_name": "hidden",
+                            "edge_id": "89200768822970"
+                        },
+                        {
+                            "to_node_id": null,
+                            "edge_type": "hidden",
+                            "condition_rules": [],
+                            "actions": [],
+                            "edge_name": "hidden",
+                            "edge_id": "7668968316074"
+                        },
+                        {
+                            "to_node_id": "14597102603674",
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false,
+                            "edge_type": "else_into",
+                            "edge_name": "不满足任何条件",
+                            "edge_id": "117659050181",
+                            "condition_rules": [],
+                            "actions": [
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "parsing_failed",
+                                    "val": false
+                                },
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "sys_node_dialogue_cnt",
+                                    "val": 0
+                                }
+                            ]
+                        }
+                    ],
+                    "content": {},
+                    "node_info": {
+                        "is_last_node": false
+                    },
+                    "tts_info": {},
+                    "entry_condition_rules": [
+                        [
+                            {
+                                "source": "text",
+                                "functions": [
+                                    {
+                                        "function_name": "contains",
+                                        "content": "订酒店"
+                                    }
+                                ]
+                            }
+                        ]
+                    ]
+                },
+                {
+                    "node_id": "0001",
+                    "node_type": "dialogue_2.0",
+                    "description": "默认结束节点",
+                    "edges": [
+                        {
+                            "to_node_id": null,
+                            "edge_type": "hidden",
+                            "condition_rules": [],
+                            "actions": [
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "sys_node_dialogue_cnt_limit",
+                                    "val": 3
+                                }
+                            ],
+                            "edge_name": "hidden",
+                            "edge_id": "22084284915750"
+                        },
+                        {
+                            "to_node_id": null,
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false,
+                            "edge_type": "exceedThenGoTo",
+                            "edge_name": "超出轮回次数",
+                            "edge_id": "291972589321915",
+                            "condition_rules": [
+                                [
+                                    {
+                                        "source": "global_info",
+                                        "functions": [
+                                            {
+                                                "content": "node_counter",
+                                                "function_name": "counter_check"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            ],
+                            "actions": [
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "parsing_failed",
+                                    "val": false
+                                },
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "sys_node_dialogue_cnt",
+                                    "val": 0
+                                }
+                            ]
+                        },
+                        {
+                            "to_node_id": "0",
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false,
+                            "edge_type": "else_into",
+                            "edge_name": "不满足任何条件",
+                            "edge_id": "2916728820467",
+                            "condition_rules": [],
+                            "actions": [
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "parsing_failed",
+                                    "val": false
+                                },
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "sys_node_dialogue_cnt",
+                                    "val": 0
+                                }
+                            ]
+                        }
+                    ],
+                    "content": {
+                        "skip_dialogue": false,
+                        "questions": {
+                            "failure_response": {
+                                "msg": ""
+                            },
+                            "initial_response": {
+                                "msg": "当前任务场景结束"
+                            },
+                            "repeat_response": {
+                                "msg": ""
+                            },
+                            "rewind_response": {
+                                "msg": ""
+                            }
+                        }
+                    },
+                    "node_info": {
+                        "is_last_node": true
+                    },
+                    "tts_info": {
+                        "bargein": {
+                            "bargein_value": false
+                        },
+                        "silence": {
+                            "silence_duration": "5000"
+                        },
+                        "vad": {
+                            "vad_value": "500"
+                        },
+                        "vsp": {
+                            "vsp_value": "暂无参数"
+                        }
+                    },
+                    "node_dialogue_cnt_limit": 3
+                },
+                {
+                    "node_id": "14597102603674",
+                    "node_type": "dialogue_2.0",
+                    "description": "哪个城市的酒店",
+                    "edges": [
+                        {
+                            "to_node_id": null,
+                            "edge_type": "hidden",
+                            "condition_rules": [],
+                            "actions": [
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "sys_node_dialogue_cnt_limit",
+                                    "val": 3
+                                }
+                            ],
+                            "edge_name": "hidden",
+                            "edge_id": "20719732314293"
+                        },
+                        {
+                            "edge_type": "normal_2.0",
+                            "edge_name": "解析器",
+                            "edge_id": "69262786411483",
+                            "to_node_id": null,
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false,
+                            "logic": "AND",
+                            "actions": [
+                                {
+                                    "source": "text",
+                                    "function": {
+                                        "function_name": "parser_library",
+                                        "content": {
+                                            "parserData": {
+                                                "id": 10,
+                                                "parserId": "ccity@1",
+                                                "name": "市级城市",
+                                                "sourceId": 1,
+                                                "description": "解析文本中所存在的中国城市名",
+                                                "version": "1",
+                                                "serviceName": "",
+                                                "parserType": 0,
+                                                "userId": "sys",
+                                                "slotInfo": [
+                                                    {
+                                                        "id": 10,
+                                                        "slotName": "ccity",
+                                                        "slotDesc": "CCITY：识别文本中的中国城市名称，包含地级市和县级市。如：“河南省安阳市曲沟镇”，识别“安阳”。\n"
+                                                    }
+                                                ],
+                                                "created_time": "2019-12-26 20:20:26"
+                                            },
+                                            "key_suffix": "_14597102603674"
+                                        }
+                                    },
+                                    "type": "parser",
+                                    "parser": "parser_library",
+                                    "customParserType": "ccity@1"
+                                }
+                            ],
+                            "condition_rules": []
+                        },
+                        {
+                            "actions": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "key": "sys_tts_silent_input_counter",
+                                            "operation": "set_key_increase",
+                                            "val": "1"
+                                        },
+                                        "function_name": "assign_value"
+                                    },
+                                    "source": "global_info",
+                                    "type": "assign_value"
+                                }
+                            ],
+                            "condition_rules": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "compare": "==",
+                                            "key": "sys_tts_silent_input",
+                                            "val": "1"
+                                        },
+                                        "function_name": "key_val_match"
+                                    },
+                                    "source": "global_info"
+                                }
+                            ],
+                            "edge_type": "normal_2.0",
+                            "edge_name": "静默次数处理",
+                            "edge_id": "95031103527785",
+                            "logic": "AND",
+                            "to_node_id": null,
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false
+                        },
+                        {
+                            "actions": [
+                                {
+                                    "function": {
+                                        "content": "sys_tts_silent_input_counter",
+                                        "function_name": "remove_key"
+                                    },
+                                    "source": "global_info",
+                                    "type": "remove_key"
+                                }
+                            ],
+                            "condition_rules": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "key": "sys_tts_silent_input"
+                                        },
+                                        "function_name": "not_contain_key"
+                                    },
+                                    "source": "global_info"
+                                },
+                                {
+                                    "function": {
+                                        "content": {
+                                            "compare": "!=",
+                                            "key": "sys_tts_silent_input",
+                                            "val": "1"
+                                        },
+                                        "function_name": "key_val_match"
+                                    },
+                                    "source": "global_info"
+                                }
+                            ],
+                            "edge_type": "normal_2.0",
+                            "edge_name": "清除静默计次",
+                            "edge_id": "9928407215544",
+                            "logic": "OR",
+                            "to_node_id": null,
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false
+                        },
+                        {
+                            "actions": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "msg": "不好意思，您太久没有说话了，我这边先挂机了，如果有其他问题，请您重新拨打，谢谢",
+                                            "replace": true,
+                                            "type": ""
+                                        },
+                                        "function_name": "response_msg"
+                                    },
+                                    "source": "text",
+                                    "type": "response_msg"
+                                }
+                            ],
+                            "condition_rules": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "compare": ">=",
+                                            "key": "sys_tts_silent_input_counter",
+                                            "val": "3"
+                                        },
+                                        "function_name": "key_val_match"
+                                    },
+                                    "source": "global_info"
+                                }
+                            ],
+                            "edge_type": "normal_2.0",
+                            "edge_name": "静默挂断话术",
+                            "edge_id": "2653032180337",
+                            "logic": "AND",
+                            "to_node_id": "0",
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false
+                        },
+                        {
+                            "actions": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "msg": "喂，您还在吗？请问还有什么可以帮助您吗？",
+                                            "replace": true,
+                                            "type": ""
+                                        },
+                                        "function_name": "response_msg"
+                                    },
+                                    "source": "text",
+                                    "type": "response_msg"
+                                },
+                                {
+                                    "function": {
+                                        "content": {
+                                            "key": "sys_node_dialogue_cnt",
+                                            "operation": "set_key_increase",
+                                            "val": "-1"
+                                        },
+                                        "function_name": "assign_value"
+                                    },
+                                    "source": "global_info",
+                                    "type": "assign_value"
+                                }
+                            ],
+                            "condition_rules": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "key": "sys_tts_silent_input_counter"
+                                        },
+                                        "function_name": "contain_key"
+                                    },
+                                    "source": "global_info"
+                                }
+                            ],
+                            "edge_type": "normal_2.0",
+                            "edge_name": "静默话术",
+                            "edge_id": "2022101075898",
+                            "logic": "AND",
+                            "to_node_id": "-1",
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false
+                        },
+                        {
+                            "edge_type": "normal_2.0",
+                            "edge_name": "跳转规则",
+                            "edge_id": "28295148917911",
+                            "to_node_id": "20927034256215",
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false,
+                            "logic": "AND",
+                            "actions": [
+                                {
+                                    "source": "global_info",
+                                    "function": {
+                                        "function_name": "assign_value",
+                                        "content": {
+                                            "operation": "set_key_to_key",
+                                            "key": "",
+                                            "val": "",
+                                            "key1": "city",
+                                            "key2": "ccity"
+                                        }
+                                    },
+                                    "type": "assign_value"
+                                },
+                                {
+                                    "source": "global_info",
+                                    "function": {
+                                        "function_name": "remove_key",
+                                        "content": "ccity"
+                                    },
+                                    "type": "remove_key"
+                                }
+                            ],
+                            "condition_rules": [
+                                {
+                                    "source": "global_info",
+                                    "function": {
+                                        "function_name": "contain_key",
+                                        "content": {
+                                            "key": "ccity"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "to_node_id": "0001",
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false,
+                            "edge_type": "exceedThenGoTo",
+                            "edge_name": "超出轮回次数",
+                            "edge_id": "875593045360",
+                            "condition_rules": [
+                                [
+                                    {
+                                        "source": "global_info",
+                                        "functions": [
+                                            {
+                                                "content": "node_counter",
+                                                "function_name": "counter_check"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            ],
+                            "actions": [
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "parsing_failed",
+                                    "val": false
+                                },
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "sys_node_dialogue_cnt",
+                                    "val": 0
+                                }
+                            ]
+                        },
+                        {
+                            "to_node_id": "14597102603674",
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false,
+                            "edge_type": "else_into",
+                            "edge_name": "不满足任何条件",
+                            "edge_id": "23090853307698",
+                            "condition_rules": [],
+                            "actions": [
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "parsing_failed",
+                                    "val": true
+                                }
+                            ]
+                        }
+                    ],
+                    "content": {
+                        "skip_dialogue": false,
+                        "questions": {
+                            "failure_response": {
+                                "msg": "请问你要订哪个地方的酒店？"
+                            },
+                            "initial_response": {
+                                "msg": "请问你要订哪个地方的酒店？"
+                            },
+                            "repeat_response": {
+                                "msg": ""
+                            },
+                            "rewind_response": {
+                                "msg": ""
+                            }
+                        }
+                    },
+                    "node_info": {
+                        "is_last_node": false
+                    },
+                    "tts_info": {
+                        "bargein": {
+                            "bargein_value": false
+                        },
+                        "silence": {
+                            "silence_duration": "5000"
+                        },
+                        "vad": {
+                            "vad_value": "500"
+                        },
+                        "vsp": {
+                            "vsp_value": "暂无参数"
+                        }
+                    },
+                    "node_dialogue_cnt_limit": 3
+                },
+                {
+                    "node_id": "20927034256215",
+                    "node_type": "dialogue_2.0",
+                    "description": "酒店名称",
+                    "edges": [
+                        {
+                            "to_node_id": null,
+                            "edge_type": "hidden",
+                            "condition_rules": [],
+                            "actions": [
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "sys_node_dialogue_cnt_limit",
+                                    "val": 3
+                                }
+                            ],
+                            "edge_name": "hidden",
+                            "edge_id": "23903217119504"
+                        },
+                        {
+                            "actions": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "key": "sys_tts_silent_input_counter",
+                                            "operation": "set_key_increase",
+                                            "val": "1"
+                                        },
+                                        "function_name": "assign_value"
+                                    },
+                                    "source": "global_info",
+                                    "type": "assign_value"
+                                }
+                            ],
+                            "condition_rules": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "compare": "==",
+                                            "key": "sys_tts_silent_input",
+                                            "val": "1"
+                                        },
+                                        "function_name": "key_val_match"
+                                    },
+                                    "source": "global_info"
+                                }
+                            ],
+                            "edge_type": "normal_2.0",
+                            "edge_name": "静默次数处理",
+                            "edge_id": "2902145811881",
+                            "logic": "AND",
+                            "to_node_id": null,
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false
+                        },
+                        {
+                            "actions": [
+                                {
+                                    "function": {
+                                        "content": "sys_tts_silent_input_counter",
+                                        "function_name": "remove_key"
+                                    },
+                                    "source": "global_info",
+                                    "type": "remove_key"
+                                }
+                            ],
+                            "condition_rules": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "key": "sys_tts_silent_input"
+                                        },
+                                        "function_name": "not_contain_key"
+                                    },
+                                    "source": "global_info"
+                                },
+                                {
+                                    "function": {
+                                        "content": {
+                                            "compare": "!=",
+                                            "key": "sys_tts_silent_input",
+                                            "val": "1"
+                                        },
+                                        "function_name": "key_val_match"
+                                    },
+                                    "source": "global_info"
+                                }
+                            ],
+                            "edge_type": "normal_2.0",
+                            "edge_name": "清除静默计次",
+                            "edge_id": "314408925885",
+                            "logic": "OR",
+                            "to_node_id": null,
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false
+                        },
+                        {
+                            "actions": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "msg": "不好意思，您太久没有说话了，我这边先挂机了，如果有其他问题，请您重新拨打，谢谢",
+                                            "replace": true,
+                                            "type": ""
+                                        },
+                                        "function_name": "response_msg"
+                                    },
+                                    "source": "text",
+                                    "type": "response_msg"
+                                }
+                            ],
+                            "condition_rules": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "compare": ">=",
+                                            "key": "sys_tts_silent_input_counter",
+                                            "val": "3"
+                                        },
+                                        "function_name": "key_val_match"
+                                    },
+                                    "source": "global_info"
+                                }
+                            ],
+                            "edge_type": "normal_2.0",
+                            "edge_name": "静默挂断话术",
+                            "edge_id": "21424658207954",
+                            "logic": "AND",
+                            "to_node_id": "0",
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false
+                        },
+                        {
+                            "actions": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "msg": "喂，您还在吗？请问还有什么可以帮助您吗？",
+                                            "replace": true,
+                                            "type": ""
+                                        },
+                                        "function_name": "response_msg"
+                                    },
+                                    "source": "text",
+                                    "type": "response_msg"
+                                },
+                                {
+                                    "function": {
+                                        "content": {
+                                            "key": "sys_node_dialogue_cnt",
+                                            "operation": "set_key_increase",
+                                            "val": "-1"
+                                        },
+                                        "function_name": "assign_value"
+                                    },
+                                    "source": "global_info",
+                                    "type": "assign_value"
+                                }
+                            ],
+                            "condition_rules": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "key": "sys_tts_silent_input_counter"
+                                        },
+                                        "function_name": "contain_key"
+                                    },
+                                    "source": "global_info"
+                                }
+                            ],
+                            "edge_type": "normal_2.0",
+                            "edge_name": "静默话术",
+                            "edge_id": "0523913403494",
+                            "logic": "AND",
+                            "to_node_id": "-1",
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false
+                        },
+                        {
+                            "edge_type": "normal_2.0",
+                            "edge_name": "跳转规则",
+                            "edge_id": "768279819865",
+                            "to_node_id": "811354657150",
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false,
+                            "logic": "AND",
+                            "actions": [
+                                {
+                                    "source": "text",
+                                    "function": {
+                                        "function_name": "regular_exp",
+                                        "content": {
+                                            "pattern": "(.*)",
+                                            "operations": [
+                                                {
+                                                    "operation": "set_to_global_info",
+                                                    "index": 0,
+                                                    "key": "hotelName"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "type": "parser",
+                                    "parser": "reg_parser"
+                                }
+                            ],
+                            "condition_rules": []
+                        },
+                        {
+                            "to_node_id": "0001",
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false,
+                            "edge_type": "exceedThenGoTo",
+                            "edge_name": "超出轮回次数",
+                            "edge_id": "1812623417149",
+                            "condition_rules": [
+                                [
+                                    {
+                                        "source": "global_info",
+                                        "functions": [
+                                            {
+                                                "content": "node_counter",
+                                                "function_name": "counter_check"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            ],
+                            "actions": [
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "parsing_failed",
+                                    "val": false
+                                },
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "sys_node_dialogue_cnt",
+                                    "val": 0
+                                }
+                            ]
+                        },
+                        {
+                            "to_node_id": "20927034256215",
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false,
+                            "edge_type": "else_into",
+                            "edge_name": "不满足任何条件",
+                            "edge_id": "4028024538505",
+                            "condition_rules": [],
+                            "actions": [
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "parsing_failed",
+                                    "val": true
+                                }
+                            ]
+                        }
+                    ],
+                    "content": {
+                        "skip_dialogue": false,
+                        "questions": {
+                            "failure_response": {
+                                "msg": "您要预定的城市是 $global{city}。 请问您想预定的酒店名称"
+                            },
+                            "initial_response": {
+                                "msg": "您要预定的城市是 $global{city}。 请问您想预定的酒店名称"
+                            },
+                            "repeat_response": {
+                                "msg": ""
+                            },
+                            "rewind_response": {
+                                "msg": ""
+                            }
+                        }
+                    },
+                    "node_info": {
+                        "is_last_node": false
+                    },
+                    "tts_info": {
+                        "bargein": {
+                            "bargein_value": false
+                        },
+                        "silence": {
+                            "silence_duration": "5000"
+                        },
+                        "vad": {
+                            "vad_value": "500"
+                        },
+                        "vsp": {
+                            "vsp_value": "暂无参数"
+                        }
+                    },
+                    "node_dialogue_cnt_limit": 3
+                },
+                {
+                    "node_id": "811354657150",
+                    "node_type": "dialogue_2.0",
+                    "description": "住几晚",
+                    "edges": [
+                        {
+                            "to_node_id": null,
+                            "edge_type": "hidden",
+                            "condition_rules": [],
+                            "actions": [
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "sys_node_dialogue_cnt_limit",
+                                    "val": 3
+                                }
+                            ],
+                            "edge_name": "hidden",
+                            "edge_id": "5992254868625"
+                        },
+                        {
+                            "edge_type": "normal_2.0",
+                            "edge_name": "解析器",
+                            "edge_id": "11826051314475",
+                            "to_node_id": null,
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false,
+                            "logic": "AND",
+                            "actions": [
+                                {
+                                    "source": "text",
+                                    "function": {
+                                        "function_name": "parser_library",
+                                        "content": {
+                                            "parserData": {
+                                                "id": 1,
+                                                "parserId": "number@1",
+                                                "name": "数字",
+                                                "sourceId": 1,
+                                                "description": "解析输入文本中的数字",
+                                                "version": "1",
+                                                "serviceName": "",
+                                                "parserType": 0,
+                                                "userId": "sys",
+                                                "slotInfo": [
+                                                    {
+                                                        "id": 1,
+                                                        "slotName": "number",
+                                                        "slotDesc": "NUMBER：数字类型，支持整数与小数，小数建议在10位以内。例：3.14159"
+                                                    }
+                                                ],
+                                                "created_time": "2019-12-26 20:20:26"
+                                            },
+                                            "key_suffix": "_811354657150"
+                                        }
+                                    },
+                                    "type": "parser",
+                                    "parser": "parser_library",
+                                    "customParserType": "number@1"
+                                }
+                            ],
+                            "condition_rules": []
+                        },
+                        {
+                            "actions": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "key": "sys_tts_silent_input_counter",
+                                            "operation": "set_key_increase",
+                                            "val": "1"
+                                        },
+                                        "function_name": "assign_value"
+                                    },
+                                    "source": "global_info",
+                                    "type": "assign_value"
+                                }
+                            ],
+                            "condition_rules": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "compare": "==",
+                                            "key": "sys_tts_silent_input",
+                                            "val": "1"
+                                        },
+                                        "function_name": "key_val_match"
+                                    },
+                                    "source": "global_info"
+                                }
+                            ],
+                            "edge_type": "normal_2.0",
+                            "edge_name": "静默次数处理",
+                            "edge_id": "303721892108213",
+                            "logic": "AND",
+                            "to_node_id": null,
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false
+                        },
+                        {
+                            "actions": [
+                                {
+                                    "function": {
+                                        "content": "sys_tts_silent_input_counter",
+                                        "function_name": "remove_key"
+                                    },
+                                    "source": "global_info",
+                                    "type": "remove_key"
+                                }
+                            ],
+                            "condition_rules": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "key": "sys_tts_silent_input"
+                                        },
+                                        "function_name": "not_contain_key"
+                                    },
+                                    "source": "global_info"
+                                },
+                                {
+                                    "function": {
+                                        "content": {
+                                            "compare": "!=",
+                                            "key": "sys_tts_silent_input",
+                                            "val": "1"
+                                        },
+                                        "function_name": "key_val_match"
+                                    },
+                                    "source": "global_info"
+                                }
+                            ],
+                            "edge_type": "normal_2.0",
+                            "edge_name": "清除静默计次",
+                            "edge_id": "40911767625020",
+                            "logic": "OR",
+                            "to_node_id": null,
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false
+                        },
+                        {
+                            "actions": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "msg": "不好意思，您太久没有说话了，我这边先挂机了，如果有其他问题，请您重新拨打，谢谢",
+                                            "replace": true,
+                                            "type": ""
+                                        },
+                                        "function_name": "response_msg"
+                                    },
+                                    "source": "text",
+                                    "type": "response_msg"
+                                }
+                            ],
+                            "condition_rules": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "compare": ">=",
+                                            "key": "sys_tts_silent_input_counter",
+                                            "val": "3"
+                                        },
+                                        "function_name": "key_val_match"
+                                    },
+                                    "source": "global_info"
+                                }
+                            ],
+                            "edge_type": "normal_2.0",
+                            "edge_name": "静默挂断话术",
+                            "edge_id": "0164752019544",
+                            "logic": "AND",
+                            "to_node_id": "0",
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false
+                        },
+                        {
+                            "actions": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "msg": "喂，您还在吗？请问还有什么可以帮助您吗？",
+                                            "replace": true,
+                                            "type": ""
+                                        },
+                                        "function_name": "response_msg"
+                                    },
+                                    "source": "text",
+                                    "type": "response_msg"
+                                },
+                                {
+                                    "function": {
+                                        "content": {
+                                            "key": "sys_node_dialogue_cnt",
+                                            "operation": "set_key_increase",
+                                            "val": "-1"
+                                        },
+                                        "function_name": "assign_value"
+                                    },
+                                    "source": "global_info",
+                                    "type": "assign_value"
+                                }
+                            ],
+                            "condition_rules": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "key": "sys_tts_silent_input_counter"
+                                        },
+                                        "function_name": "contain_key"
+                                    },
+                                    "source": "global_info"
+                                }
+                            ],
+                            "edge_type": "normal_2.0",
+                            "edge_name": "静默话术",
+                            "edge_id": "063402451101342",
+                            "logic": "AND",
+                            "to_node_id": "-1",
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false
+                        },
+                        {
+                            "edge_type": "normal_2.0",
+                            "edge_name": "跳转规则",
+                            "edge_id": "0970273212684",
+                            "to_node_id": "437724924085",
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false,
+                            "logic": "AND",
+                            "actions": [
+                                {
+                                    "source": "global_info",
+                                    "function": {
+                                        "function_name": "assign_value",
+                                        "content": {
+                                            "operation": "set_key_to_key",
+                                            "key": "checkDays",
+                                            "val": "number",
+                                            "key1": "checkDays",
+                                            "key2": "number"
+                                        }
+                                    },
+                                    "type": "assign_value"
+                                },
+                                {
+                                    "source": "global_info",
+                                    "function": {
+                                        "function_name": "remove_key",
+                                        "content": "number"
+                                    },
+                                    "type": "remove_key"
+                                }
+                            ],
+                            "condition_rules": [
+                                {
+                                    "source": "global_info",
+                                    "function": {
+                                        "function_name": "contain_key",
+                                        "content": {
+                                            "key": "number"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "to_node_id": "0001",
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false,
+                            "edge_type": "exceedThenGoTo",
+                            "edge_name": "超出轮回次数",
+                            "edge_id": "4930005829852",
+                            "condition_rules": [
+                                [
+                                    {
+                                        "source": "global_info",
+                                        "functions": [
+                                            {
+                                                "content": "node_counter",
+                                                "function_name": "counter_check"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            ],
+                            "actions": [
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "parsing_failed",
+                                    "val": false
+                                },
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "sys_node_dialogue_cnt",
+                                    "val": 0
+                                }
+                            ]
+                        },
+                        {
+                            "to_node_id": "811354657150",
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false,
+                            "edge_type": "else_into",
+                            "edge_name": "不满足任何条件",
+                            "edge_id": "2629847444443",
+                            "condition_rules": [],
+                            "actions": [
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "parsing_failed",
+                                    "val": true
+                                }
+                            ]
+                        }
+                    ],
+                    "content": {
+                        "skip_dialogue": false,
+                        "questions": {
+                            "failure_response": {
+                                "msg": "您要入住的酒店是: $global{hotelName}。请问你要住几晚？"
+                            },
+                            "initial_response": {
+                                "msg": "您要入住的酒店是: $global{hotelName}。请问你要住几晚？"
+                            },
+                            "repeat_response": {
+                                "msg": ""
+                            },
+                            "rewind_response": {
+                                "msg": ""
+                            }
+                        }
+                    },
+                    "node_info": {
+                        "is_last_node": false
+                    },
+                    "tts_info": {
+                        "bargein": {
+                            "bargein_value": false
+                        },
+                        "silence": {
+                            "silence_duration": "5000"
+                        },
+                        "vad": {
+                            "vad_value": "500"
+                        },
+                        "vsp": {
+                            "vsp_value": "暂无参数"
+                        }
+                    },
+                    "node_dialogue_cnt_limit": 3
+                },
+                {
+                    "node_id": "437724924085",
+                    "node_type": "dialogue_2.0",
+                    "description": "汇总",
+                    "edges": [
+                        {
+                            "to_node_id": null,
+                            "edge_type": "hidden",
+                            "condition_rules": [],
+                            "actions": [
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "sys_node_dialogue_cnt_limit",
+                                    "val": 3
+                                }
+                            ],
+                            "edge_name": "hidden",
+                            "edge_id": "2062955559261"
+                        },
+                        {
+                            "actions": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "key": "sys_tts_silent_input_counter",
+                                            "operation": "set_key_increase",
+                                            "val": "1"
+                                        },
+                                        "function_name": "assign_value"
+                                    },
+                                    "source": "global_info",
+                                    "type": "assign_value"
+                                }
+                            ],
+                            "condition_rules": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "compare": "==",
+                                            "key": "sys_tts_silent_input",
+                                            "val": "1"
+                                        },
+                                        "function_name": "key_val_match"
+                                    },
+                                    "source": "global_info"
+                                }
+                            ],
+                            "edge_type": "normal_2.0",
+                            "edge_name": "静默次数处理",
+                            "edge_id": "9064886919466",
+                            "logic": "AND",
+                            "to_node_id": null,
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false
+                        },
+                        {
+                            "actions": [
+                                {
+                                    "function": {
+                                        "content": "sys_tts_silent_input_counter",
+                                        "function_name": "remove_key"
+                                    },
+                                    "source": "global_info",
+                                    "type": "remove_key"
+                                }
+                            ],
+                            "condition_rules": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "key": "sys_tts_silent_input"
+                                        },
+                                        "function_name": "not_contain_key"
+                                    },
+                                    "source": "global_info"
+                                },
+                                {
+                                    "function": {
+                                        "content": {
+                                            "compare": "!=",
+                                            "key": "sys_tts_silent_input",
+                                            "val": "1"
+                                        },
+                                        "function_name": "key_val_match"
+                                    },
+                                    "source": "global_info"
+                                }
+                            ],
+                            "edge_type": "normal_2.0",
+                            "edge_name": "清除静默计次",
+                            "edge_id": "033252959930680",
+                            "logic": "OR",
+                            "to_node_id": null,
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false
+                        },
+                        {
+                            "actions": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "msg": "不好意思，您太久没有说话了，我这边先挂机了，如果有其他问题，请您重新拨打，谢谢",
+                                            "replace": true,
+                                            "type": ""
+                                        },
+                                        "function_name": "response_msg"
+                                    },
+                                    "source": "text",
+                                    "type": "response_msg"
+                                }
+                            ],
+                            "condition_rules": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "compare": ">=",
+                                            "key": "sys_tts_silent_input_counter",
+                                            "val": "3"
+                                        },
+                                        "function_name": "key_val_match"
+                                    },
+                                    "source": "global_info"
+                                }
+                            ],
+                            "edge_type": "normal_2.0",
+                            "edge_name": "静默挂断话术",
+                            "edge_id": "9023336728869",
+                            "logic": "AND",
+                            "to_node_id": "0",
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false
+                        },
+                        {
+                            "actions": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "msg": "喂，您还在吗？请问还有什么可以帮助您吗？",
+                                            "replace": true,
+                                            "type": ""
+                                        },
+                                        "function_name": "response_msg"
+                                    },
+                                    "source": "text",
+                                    "type": "response_msg"
+                                },
+                                {
+                                    "function": {
+                                        "content": {
+                                            "key": "sys_node_dialogue_cnt",
+                                            "operation": "set_key_increase",
+                                            "val": "-1"
+                                        },
+                                        "function_name": "assign_value"
+                                    },
+                                    "source": "global_info",
+                                    "type": "assign_value"
+                                }
+                            ],
+                            "condition_rules": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "key": "sys_tts_silent_input_counter"
+                                        },
+                                        "function_name": "contain_key"
+                                    },
+                                    "source": "global_info"
+                                }
+                            ],
+                            "edge_type": "normal_2.0",
+                            "edge_name": "静默话术",
+                            "edge_id": "40512533524947",
+                            "logic": "AND",
+                            "to_node_id": "-1",
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false
+                        },
+                        {
+                            "edge_type": "normal_2.0",
+                            "edge_name": "跳转规则",
+                            "edge_id": "5842082826916",
+                            "to_node_id": null,
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false,
+                            "logic": "AND",
+                            "actions": [
+                                {
+                                    "source": "text",
+                                    "function": {
+                                        "function_name": "polarity_parser",
+                                        "content": {
+                                            "key": "POLARITY",
+                                            "key_suffix": "_437724924085"
+                                        }
+                                    },
+                                    "type": "parser",
+                                    "parser": "polarity_parser"
+                                }
+                            ],
+                            "condition_rules": [],
+                            "open": 0
+                        },
+                        {
+                            "edge_type": "normal_2.0",
+                            "edge_name": "跳转规则",
+                            "edge_id": "6719081537673",
+                            "to_node_id": "154401185406732",
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false,
+                            "logic": "AND",
+                            "actions": [],
+                            "condition_rules": [
+                                {
+                                    "source": "global_info",
+                                    "function": {
+                                        "function_name": "contain_key",
+                                        "content": {
+                                            "key": "POLARITY"
+                                        }
+                                    }
+                                },
+                                {
+                                    "source": "global_info",
+                                    "function": {
+                                        "function_name": "key_val_match",
+                                        "content": {
+                                            "compare": "==",
+                                            "key": "POLARITY",
+                                            "val": "yes"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "edge_type": "normal_2.0",
+                            "edge_name": "跳转规则",
+                            "edge_id": "16438252740172",
+                            "to_node_id": "30515936330046",
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false,
+                            "logic": "AND",
+                            "actions": [],
+                            "condition_rules": [
+                                {
+                                    "source": "global_info",
+                                    "function": {
+                                        "function_name": "contain_key",
+                                        "content": {
+                                            "key": "POLARITY"
+                                        }
+                                    }
+                                },
+                                {
+                                    "source": "global_info",
+                                    "function": {
+                                        "function_name": "key_val_match",
+                                        "content": {
+                                            "compare": "==",
+                                            "key": "POLARITY",
+                                            "val": "no"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "to_node_id": "0001",
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false,
+                            "edge_type": "exceedThenGoTo",
+                            "edge_name": "超出轮回次数",
+                            "edge_id": "1018283258809",
+                            "condition_rules": [
+                                [
+                                    {
+                                        "source": "global_info",
+                                        "functions": [
+                                            {
+                                                "content": "node_counter",
+                                                "function_name": "counter_check"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            ],
+                            "actions": [
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "parsing_failed",
+                                    "val": false
+                                },
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "sys_node_dialogue_cnt",
+                                    "val": 0
+                                }
+                            ]
+                        },
+                        {
+                            "to_node_id": "437724924085",
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false,
+                            "edge_type": "else_into",
+                            "edge_name": "不满足任何条件",
+                            "edge_id": "918750076436",
+                            "condition_rules": [],
+                            "actions": [
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "parsing_failed",
+                                    "val": true
+                                }
+                            ]
+                        }
+                    ],
+                    "content": {
+                        "skip_dialogue": false,
+                        "questions": {
+                            "failure_response": {
+                                "msg": "您要入住的城市是: $global{city}, 酒店名称是: $global{hotelName}, 住$global{checkDays}晚， 请问您是否预定？$global{POLARITY}\n"
+                            },
+                            "initial_response": {
+                                "msg": "您要入住的城市是: $global{city}, 酒店名称是: $global{hotelName}, 住$global{checkDays}晚， 请问您是否预定？\n"
+                            },
+                            "repeat_response": {
+                                "msg": ""
+                            },
+                            "rewind_response": {
+                                "msg": ""
+                            }
+                        }
+                    },
+                    "node_info": {
+                        "is_last_node": false
+                    },
+                    "tts_info": {
+                        "bargein": {
+                            "bargein_value": false
+                        },
+                        "silence": {
+                            "silence_duration": "5000"
+                        },
+                        "vad": {
+                            "vad_value": "500"
+                        },
+                        "vsp": {
+                            "vsp_value": "暂无参数"
+                        }
+                    },
+                    "node_dialogue_cnt_limit": 3
+                },
+                {
+                    "node_id": "154401185406732",
+                    "node_type": "dialogue_2.0",
+                    "description": "确认",
+                    "edges": [
+                        {
+                            "to_node_id": null,
+                            "edge_type": "hidden",
+                            "condition_rules": [],
+                            "actions": [
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "sys_node_dialogue_cnt_limit",
+                                    "val": 3
+                                }
+                            ],
+                            "edge_name": "hidden",
+                            "edge_id": "1900243501105"
+                        },
+                        {
+                            "actions": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "key": "sys_tts_silent_input_counter",
+                                            "operation": "set_key_increase",
+                                            "val": "1"
+                                        },
+                                        "function_name": "assign_value"
+                                    },
+                                    "source": "global_info",
+                                    "type": "assign_value"
+                                }
+                            ],
+                            "condition_rules": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "compare": "==",
+                                            "key": "sys_tts_silent_input",
+                                            "val": "1"
+                                        },
+                                        "function_name": "key_val_match"
+                                    },
+                                    "source": "global_info"
+                                }
+                            ],
+                            "edge_type": "normal_2.0",
+                            "edge_name": "静默次数处理",
+                            "edge_id": "03072696625639",
+                            "logic": "AND",
+                            "to_node_id": null,
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false
+                        },
+                        {
+                            "actions": [
+                                {
+                                    "function": {
+                                        "content": "sys_tts_silent_input_counter",
+                                        "function_name": "remove_key"
+                                    },
+                                    "source": "global_info",
+                                    "type": "remove_key"
+                                }
+                            ],
+                            "condition_rules": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "key": "sys_tts_silent_input"
+                                        },
+                                        "function_name": "not_contain_key"
+                                    },
+                                    "source": "global_info"
+                                },
+                                {
+                                    "function": {
+                                        "content": {
+                                            "compare": "!=",
+                                            "key": "sys_tts_silent_input",
+                                            "val": "1"
+                                        },
+                                        "function_name": "key_val_match"
+                                    },
+                                    "source": "global_info"
+                                }
+                            ],
+                            "edge_type": "normal_2.0",
+                            "edge_name": "清除静默计次",
+                            "edge_id": "1843095710412",
+                            "logic": "OR",
+                            "to_node_id": null,
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false
+                        },
+                        {
+                            "actions": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "msg": "不好意思，您太久没有说话了，我这边先挂机了，如果有其他问题，请您重新拨打，谢谢",
+                                            "replace": true,
+                                            "type": ""
+                                        },
+                                        "function_name": "response_msg"
+                                    },
+                                    "source": "text",
+                                    "type": "response_msg"
+                                }
+                            ],
+                            "condition_rules": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "compare": ">=",
+                                            "key": "sys_tts_silent_input_counter",
+                                            "val": "3"
+                                        },
+                                        "function_name": "key_val_match"
+                                    },
+                                    "source": "global_info"
+                                }
+                            ],
+                            "edge_type": "normal_2.0",
+                            "edge_name": "静默挂断话术",
+                            "edge_id": "56890219604361",
+                            "logic": "AND",
+                            "to_node_id": "0",
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false
+                        },
+                        {
+                            "actions": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "msg": "喂，您还在吗？请问还有什么可以帮助您吗？",
+                                            "replace": true,
+                                            "type": ""
+                                        },
+                                        "function_name": "response_msg"
+                                    },
+                                    "source": "text",
+                                    "type": "response_msg"
+                                },
+                                {
+                                    "function": {
+                                        "content": {
+                                            "key": "sys_node_dialogue_cnt",
+                                            "operation": "set_key_increase",
+                                            "val": "-1"
+                                        },
+                                        "function_name": "assign_value"
+                                    },
+                                    "source": "global_info",
+                                    "type": "assign_value"
+                                }
+                            ],
+                            "condition_rules": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "key": "sys_tts_silent_input_counter"
+                                        },
+                                        "function_name": "contain_key"
+                                    },
+                                    "source": "global_info"
+                                }
+                            ],
+                            "edge_type": "normal_2.0",
+                            "edge_name": "静默话术",
+                            "edge_id": "5827172201321",
+                            "logic": "AND",
+                            "to_node_id": "-1",
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false
+                        },
+                        {
+                            "to_node_id": "0001",
+                            "edge_type": "exceedThenGoTo",
+                            "edge_name": "超出轮回次数",
+                            "edge_id": "729450631955",
+                            "condition_rules": [
+                                [
+                                    {
+                                        "source": "global_info",
+                                        "functions": [
+                                            {
+                                                "content": "node_counter",
+                                                "function_name": "counter_check"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            ],
+                            "actions": [
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "parsing_failed",
+                                    "val": false
+                                },
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "sys_node_dialogue_cnt",
+                                    "val": 0
+                                }
+                            ]
+                        },
+                        {
+                            "to_node_id": "154401185406732",
+                            "edge_type": "else_into",
+                            "edge_name": "不满足任何条件",
+                            "edge_id": "16581300164090",
+                            "condition_rules": [],
+                            "actions": [
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "parsing_failed",
+                                    "val": true
+                                }
+                            ]
+                        }
+                    ],
+                    "content": {
+                        "skip_dialogue": false,
+                        "questions": {
+                            "failure_response": {
+                                "msg": ""
+                            },
+                            "initial_response": {
+                                "msg": "好的，酒店已为您预定好了"
+                            },
+                            "repeat_response": {
+                                "msg": ""
+                            },
+                            "rewind_response": {
+                                "msg": ""
+                            }
+                        }
+                    },
+                    "node_info": {
+                        "is_last_node": false
+                    },
+                    "tts_info": {
+                        "bargein": {
+                            "bargein_value": false
+                        },
+                        "silence": {
+                            "silence_duration": "5000"
+                        },
+                        "vad": {
+                            "vad_value": "500"
+                        },
+                        "vsp": {
+                            "vsp_value": "暂无参数"
+                        }
+                    },
+                    "node_dialogue_cnt_limit": 3
+                },
+                {
+                    "node_id": "30515936330046",
+                    "node_type": "dialogue_2.0",
+                    "description": "取消",
+                    "edges": [
+                        {
+                            "to_node_id": null,
+                            "edge_type": "hidden",
+                            "condition_rules": [],
+                            "actions": [
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "sys_node_dialogue_cnt_limit",
+                                    "val": 3
+                                }
+                            ],
+                            "edge_name": "hidden",
+                            "edge_id": "6031196886790"
+                        },
+                        {
+                            "actions": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "key": "sys_tts_silent_input_counter",
+                                            "operation": "set_key_increase",
+                                            "val": "1"
+                                        },
+                                        "function_name": "assign_value"
+                                    },
+                                    "source": "global_info",
+                                    "type": "assign_value"
+                                }
+                            ],
+                            "condition_rules": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "compare": "==",
+                                            "key": "sys_tts_silent_input",
+                                            "val": "1"
+                                        },
+                                        "function_name": "key_val_match"
+                                    },
+                                    "source": "global_info"
+                                }
+                            ],
+                            "edge_type": "normal_2.0",
+                            "edge_name": "静默次数处理",
+                            "edge_id": "0547344576644",
+                            "logic": "AND",
+                            "to_node_id": null,
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false
+                        },
+                        {
+                            "actions": [
+                                {
+                                    "function": {
+                                        "content": "sys_tts_silent_input_counter",
+                                        "function_name": "remove_key"
+                                    },
+                                    "source": "global_info",
+                                    "type": "remove_key"
+                                }
+                            ],
+                            "condition_rules": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "key": "sys_tts_silent_input"
+                                        },
+                                        "function_name": "not_contain_key"
+                                    },
+                                    "source": "global_info"
+                                },
+                                {
+                                    "function": {
+                                        "content": {
+                                            "compare": "!=",
+                                            "key": "sys_tts_silent_input",
+                                            "val": "1"
+                                        },
+                                        "function_name": "key_val_match"
+                                    },
+                                    "source": "global_info"
+                                }
+                            ],
+                            "edge_type": "normal_2.0",
+                            "edge_name": "清除静默计次",
+                            "edge_id": "04784012000391",
+                            "logic": "OR",
+                            "to_node_id": null,
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false
+                        },
+                        {
+                            "actions": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "msg": "不好意思，您太久没有说话了，我这边先挂机了，如果有其他问题，请您重新拨打，谢谢",
+                                            "replace": true,
+                                            "type": ""
+                                        },
+                                        "function_name": "response_msg"
+                                    },
+                                    "source": "text",
+                                    "type": "response_msg"
+                                }
+                            ],
+                            "condition_rules": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "compare": ">=",
+                                            "key": "sys_tts_silent_input_counter",
+                                            "val": "3"
+                                        },
+                                        "function_name": "key_val_match"
+                                    },
+                                    "source": "global_info"
+                                }
+                            ],
+                            "edge_type": "normal_2.0",
+                            "edge_name": "静默挂断话术",
+                            "edge_id": "16163071934993",
+                            "logic": "AND",
+                            "to_node_id": "0",
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false
+                        },
+                        {
+                            "actions": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "msg": "喂，您还在吗？请问还有什么可以帮助您吗？",
+                                            "replace": true,
+                                            "type": ""
+                                        },
+                                        "function_name": "response_msg"
+                                    },
+                                    "source": "text",
+                                    "type": "response_msg"
+                                },
+                                {
+                                    "function": {
+                                        "content": {
+                                            "key": "sys_node_dialogue_cnt",
+                                            "operation": "set_key_increase",
+                                            "val": "-1"
+                                        },
+                                        "function_name": "assign_value"
+                                    },
+                                    "source": "global_info",
+                                    "type": "assign_value"
+                                }
+                            ],
+                            "condition_rules": [
+                                {
+                                    "function": {
+                                        "content": {
+                                            "key": "sys_tts_silent_input_counter"
+                                        },
+                                        "function_name": "contain_key"
+                                    },
+                                    "source": "global_info"
+                                }
+                            ],
+                            "edge_type": "normal_2.0",
+                            "edge_name": "静默话术",
+                            "edge_id": "03610046709311",
+                            "logic": "AND",
+                            "to_node_id": "-1",
+                            "to_node_labels": [],
+                            "to_node_labels_enable": false
+                        },
+                        {
+                            "to_node_id": "0001",
+                            "edge_type": "exceedThenGoTo",
+                            "edge_name": "超出轮回次数",
+                            "edge_id": "0331264764218",
+                            "condition_rules": [
+                                [
+                                    {
+                                        "source": "global_info",
+                                        "functions": [
+                                            {
+                                                "content": "node_counter",
+                                                "function_name": "counter_check"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            ],
+                            "actions": [
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "parsing_failed",
+                                    "val": false
+                                },
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "sys_node_dialogue_cnt",
+                                    "val": 0
+                                }
+                            ]
+                        },
+                        {
+                            "to_node_id": "30515936330046",
+                            "edge_type": "else_into",
+                            "edge_name": "不满足任何条件",
+                            "edge_id": "00791388426490",
+                            "condition_rules": [],
+                            "actions": [
+                                {
+                                    "operation": "set_to_global_info",
+                                    "key": "parsing_failed",
+                                    "val": true
+                                }
+                            ]
+                        }
+                    ],
+                    "content": {
+                        "skip_dialogue": false,
+                        "questions": {
+                            "failure_response": {
+                                "msg": ""
+                            },
+                            "initial_response": {
+                                "msg": "好的，已为您取消"
+                            },
+                            "repeat_response": {
+                                "msg": ""
+                            },
+                            "rewind_response": {
+                                "msg": ""
+                            }
+                        }
+                    },
+                    "node_info": {
+                        "is_last_node": false
+                    },
+                    "tts_info": {
+                        "bargein": {
+                            "bargein_value": false
+                        },
+                        "silence": {
+                            "silence_duration": "5000"
+                        },
+                        "vad": {
+                            "vad_value": "500"
+                        },
+                        "vsp": {
+                            "vsp_value": "暂无参数"
+                        }
+                    },
+                    "node_dialogue_cnt_limit": 3
+                }
+            ],
+            "ui_data": {
+                "nodes": [
+                    {
+                        "nodeId": "15560167299200",
+                        "nodeName": "入口节点",
+                        "nodeType": "entry",
+                        "triggerTab": {
+                            "rules": [
+                                [
+                                    {
+                                        "source": "text",
+                                        "functions": [
+                                            {
+                                                "function_name": "contains",
+                                                "content": "订酒店"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            ]
+                        },
+                        "edgeTab": {
+                            "elseInto": "14597102603674",
+                            "elseIntoNodeLabels": [],
+                            "elseIntoNodeLabelsEnable": false,
+                            "normalEdges": []
+                        },
+                        "settingBasicTab": {
+                            "nodeType": "entry",
+                            "nodeName": "入口节点"
+                        },
+                        "warnings": []
+                    },
+                    {
+                        "nodeId": "0001",
+                        "nodeName": "默认结束节点",
+                        "nodeType": "dialogue_2.0",
+                        "isDefaultEnd": true,
+                        "dialogue2SettingTab": {
+                            "nodeName": "",
+                            "parser": "none",
+                            "targetEntities": [],
+                            "skipIfKeyExist": [],
+                            "initialResponse": "当前任务场景结束",
+                            "repeatResponse": "",
+                            "rewindResponse": "",
+                            "failureResponse": "",
+                            "parseFromThisNode": false,
+                            "skipDialogue": false
+                        },
+                        "edgeTab2": {
+                            "normalEdges": [],
+                            "exceedThenGoto": null,
+                            "elseInto": "0",
+                            "dialogueLimit": 3,
+                            "useCommonEdge": true,
+                            "elseIntoNodeLabels": [],
+                            "elseIntoNodeLabelsEnable": false,
+                            "exceedThenGotoLabels": [],
+                            "exceedThenGotoLabelsEnable": false
+                        },
+                        "understandTab": {
+                            "acttableData": [],
+                            "intentTableData": [],
+                            "intentOption": [
+                                []
+                            ],
+                            "intentmodel": [],
+                            "intent": [],
+                            "returnvalue": [],
+                            "isIntent": false,
+                            "isAct": false,
+                            "isParse": false,
+                            "parseTableData": [],
+                            "parsetypeValue": [],
+                            "parsenameValue": []
+                        },
+                        "ttsInfo": {
+                            "bargein": {
+                                "bargein_default": true,
+                                "bargein_value": false,
+                                "bargein_speech": ""
+                            },
+                            "silence": {
+                                "silence_default": true,
+                                "silence_switch": true,
+                                "silence_duration": "5000",
+                                "slient_speech": "喂，您还在吗？请问还有什么可以帮助您吗？",
+                                "num_limit": "3",
+                                "stop_speech": "不好意思，您太久没有说话了，我这边先挂机了，如果有其他问题，请您重新拨打，谢谢"
+                            },
+                            "vad": {
+                                "vad_default": true,
+                                "vad_value": "500"
+                            },
+                            "vsp": {
+                                "vsp_default": true,
+                                "vsp_value": "暂无参数"
+                            }
+                        },
+                        "warnings": [
+                            {
+                                "type": "direct_quite_dialogue_2"
+                            },
+                            {
+                                "type": "has_exit_connection"
+                            }
+                        ]
+                    },
+                    {
+                        "nodeId": "14597102603674",
+                        "nodeName": "哪个城市的酒店",
+                        "nodeType": "dialogue_2.0",
+                        "edgeTab2": {
+                            "elseInto": "parseFailedEdge",
+                            "elseIntoNodeLabels": [],
+                            "elseIntoNodeLabelsEnable": false,
+                            "normalEdges": [
+                                {
+                                    "edge_type": "normal_2.0",
+                                    "edge_name": "跳转规则",
+                                    "edge_id": "28295148917911",
+                                    "to_node_id": "20927034256215",
+                                    "to_node_labels": [],
+                                    "to_node_labels_enable": false,
+                                    "logic": "AND",
+                                    "actions": [
+                                        {
+                                            "source": "global_info",
+                                            "function": {
+                                                "function_name": "assign_value",
+                                                "content": {
+                                                    "operation": "set_key_to_key",
+                                                    "key": "",
+                                                    "val": "",
+                                                    "key1": "city",
+                                                    "key2": "ccity"
+                                                }
+                                            },
+                                            "type": "assign_value"
+                                        },
+                                        {
+                                            "source": "global_info",
+                                            "function": {
+                                                "function_name": "remove_key",
+                                                "content": "ccity"
+                                            },
+                                            "type": "remove_key"
+                                        }
+                                    ],
+                                    "condition_rules": [
+                                        {
+                                            "source": "global_info",
+                                            "function": {
+                                                "function_name": "contain_key",
+                                                "content": {
+                                                    "key": "ccity"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ],
+                            "useCommonEdge": true,
+                            "responseValue": "defaultRe",
+                            "elsethenSelect": 1,
+                            "dialogueLimit": 3,
+                            "exceedThenGoto": "0001",
+                            "exceedThenGotoLabels": [],
+                            "exceedThenGotoLabelsEnable": false
+                        },
+                        "dialogue2SettingTab": {
+                            "nodeName": "对话节点2.0",
+                            "parser": "none",
+                            "targetEntities": [],
+                            "skipIfKeyExist": [],
+                            "initialResponse": "请问你要订哪个地方的酒店？",
+                            "repeatResponse": "",
+                            "rewindResponse": "",
+                            "parseFromThisNode": false,
+                            "skipDialogue": false,
+                            "failureResponse": "请问你要订哪个地方的酒店？"
+                        },
+                        "ttsInfo": {
+                            "bargein": {
+                                "bargein_default": true,
+                                "bargein_value": false,
+                                "bargein_speech": ""
+                            },
+                            "silence": {
+                                "silence_default": true,
+                                "silence_switch": true,
+                                "silence_duration": "5000",
+                                "slient_speech": "喂，您还在吗？请问还有什么可以帮助您吗？",
+                                "num_limit": "3",
+                                "stop_speech": "不好意思，您太久没有说话了，我这边先挂机了，如果有其他问题，请您重新拨打，谢谢"
+                            },
+                            "vad": {
+                                "vad_default": true,
+                                "vad_value": "500"
+                            },
+                            "vsp": {
+                                "vsp_default": true,
+                                "vsp_value": "暂无参数"
+                            }
+                        },
+                        "understandTab": {
+                            "acttableData": [],
+                            "actTypeValue": [],
+                            "isAct": false,
+                            "isParse": true,
+                            "isIntent": false,
+                            "intentTableData": [],
+                            "intentmodel": [],
+                            "returnvalue": [],
+                            "nointentName": "无意图",
+                            "parseTableData": [
+                                {
+                                    "parserData": {
+                                        "id": 10,
+                                        "parserId": "ccity@1",
+                                        "name": "市级城市",
+                                        "sourceId": 1,
+                                        "description": "解析文本中所存在的中国城市名",
+                                        "version": "1",
+                                        "serviceName": "",
+                                        "parserType": 0,
+                                        "userId": "sys",
+                                        "slotInfo": [
+                                            {
+                                                "id": 10,
+                                                "slotName": "ccity",
+                                                "slotDesc": "CCITY：识别文本中的中国城市名称，包含地级市和县级市。如：“河南省安阳市曲沟镇”，识别“安阳”。\n"
+                                            }
+                                        ],
+                                        "created_time": "2019-12-26 20:20:26"
+                                    },
+                                    "slotName": [
+                                        {
+                                            "id": 10,
+                                            "slotName": "ccity",
+                                            "slotDesc": "CCITY：识别文本中的中国城市名称，包含地级市和县级市。如：“河南省安阳市曲沟镇”，识别“安阳”。\n"
+                                        }
+                                    ],
+                                    "description": [
+                                        {
+                                            "id": 10,
+                                            "slotName": "ccity",
+                                            "slotDesc": "CCITY：识别文本中的中国城市名称，包含地级市和县级市。如：“河南省安阳市曲沟镇”，识别“安阳”。\n"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "parsetypeValue": [
+                                "library"
+                            ],
+                            "parsenameValue": [
+                                "ccity@1"
+                            ]
+                        },
+                        "warnings": [
+                            {
+                                "type": "has_exit_connection"
+                            }
+                        ]
+                    },
+                    {
+                        "nodeId": "20927034256215",
+                        "nodeName": "酒店名称",
+                        "nodeType": "dialogue_2.0",
+                        "edgeTab2": {
+                            "elseInto": "parseFailedEdge",
+                            "elseIntoNodeLabels": [],
+                            "elseIntoNodeLabelsEnable": false,
+                            "normalEdges": [
+                                {
+                                    "edge_type": "normal_2.0",
+                                    "edge_name": "跳转规则",
+                                    "edge_id": "768279819865",
+                                    "to_node_id": "811354657150",
+                                    "to_node_labels": [],
+                                    "to_node_labels_enable": false,
+                                    "logic": "AND",
+                                    "actions": [
+                                        {
+                                            "source": "text",
+                                            "function": {
+                                                "function_name": "regular_exp",
+                                                "content": {
+                                                    "pattern": "(.*)",
+                                                    "operations": [
+                                                        {
+                                                            "operation": "set_to_global_info",
+                                                            "index": 0,
+                                                            "key": "hotelName"
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            "type": "parser",
+                                            "parser": "reg_parser"
+                                        }
+                                    ],
+                                    "condition_rules": []
+                                }
+                            ],
+                            "useCommonEdge": true,
+                            "responseValue": "defaultRe",
+                            "elsethenSelect": 1,
+                            "dialogueLimit": 3,
+                            "exceedThenGoto": "0001",
+                            "exceedThenGotoLabels": [],
+                            "exceedThenGotoLabelsEnable": false
+                        },
+                        "dialogue2SettingTab": {
+                            "nodeName": "对话节点2.0_1",
+                            "parser": "none",
+                            "targetEntities": [],
+                            "skipIfKeyExist": [],
+                            "initialResponse": "您要预定的城市是 $global{city}。 请问您想预定的酒店名称",
+                            "repeatResponse": "",
+                            "rewindResponse": "",
+                            "parseFromThisNode": false,
+                            "skipDialogue": false,
+                            "failureResponse": "您要预定的城市是 $global{city}。 请问您想预定的酒店名称"
+                        },
+                        "ttsInfo": {
+                            "bargein": {
+                                "bargein_default": true,
+                                "bargein_value": false,
+                                "bargein_speech": ""
+                            },
+                            "silence": {
+                                "silence_default": true,
+                                "silence_switch": true,
+                                "silence_duration": "5000",
+                                "slient_speech": "喂，您还在吗？请问还有什么可以帮助您吗？",
+                                "num_limit": "3",
+                                "stop_speech": "不好意思，您太久没有说话了，我这边先挂机了，如果有其他问题，请您重新拨打，谢谢"
+                            },
+                            "vad": {
+                                "vad_default": true,
+                                "vad_value": "500"
+                            },
+                            "vsp": {
+                                "vsp_default": true,
+                                "vsp_value": "暂无参数"
+                            }
+                        },
+                        "understandTab": {
+                            "acttableData": [],
+                            "intentTableData": [],
+                            "intentOption": [
+                                []
+                            ],
+                            "intentmodel": [],
+                            "intent": [],
+                            "returnvalue": [],
+                            "isIntent": false,
+                            "isAct": false,
+                            "isParse": false,
+                            "parseTableData": [],
+                            "parsetypeValue": [],
+                            "parsenameValue": []
+                        },
+                        "warnings": [
+                            {
+                                "type": "has_exit_connection"
+                            }
+                        ]
+                    },
+                    {
+                        "nodeId": "811354657150",
+                        "nodeName": "住几晚",
+                        "nodeType": "dialogue_2.0",
+                        "edgeTab2": {
+                            "elseInto": "parseFailedEdge",
+                            "elseIntoNodeLabels": [],
+                            "elseIntoNodeLabelsEnable": false,
+                            "normalEdges": [
+                                {
+                                    "edge_type": "normal_2.0",
+                                    "edge_name": "跳转规则",
+                                    "edge_id": "0970273212684",
+                                    "to_node_id": "437724924085",
+                                    "to_node_labels": [],
+                                    "to_node_labels_enable": false,
+                                    "logic": "AND",
+                                    "actions": [
+                                        {
+                                            "source": "global_info",
+                                            "function": {
+                                                "function_name": "assign_value",
+                                                "content": {
+                                                    "operation": "set_key_to_key",
+                                                    "key": "checkDays",
+                                                    "val": "number",
+                                                    "key1": "checkDays",
+                                                    "key2": "number"
+                                                }
+                                            },
+                                            "type": "assign_value"
+                                        },
+                                        {
+                                            "source": "global_info",
+                                            "function": {
+                                                "function_name": "remove_key",
+                                                "content": "number"
+                                            },
+                                            "type": "remove_key"
+                                        }
+                                    ],
+                                    "condition_rules": [
+                                        {
+                                            "source": "global_info",
+                                            "function": {
+                                                "function_name": "contain_key",
+                                                "content": {
+                                                    "key": "number"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ],
+                            "useCommonEdge": true,
+                            "responseValue": "defaultRe",
+                            "elsethenSelect": 1,
+                            "dialogueLimit": 3,
+                            "exceedThenGoto": "0001",
+                            "exceedThenGotoLabels": [],
+                            "exceedThenGotoLabelsEnable": false
+                        },
+                        "dialogue2SettingTab": {
+                            "nodeName": "对话节点2.0_2",
+                            "parser": "none",
+                            "targetEntities": [],
+                            "skipIfKeyExist": [],
+                            "initialResponse": "您要入住的酒店是: $global{hotelName}。请问你要住几晚？",
+                            "repeatResponse": "",
+                            "rewindResponse": "",
+                            "parseFromThisNode": false,
+                            "skipDialogue": false,
+                            "failureResponse": "您要入住的酒店是: $global{hotelName}。请问你要住几晚？"
+                        },
+                        "ttsInfo": {
+                            "bargein": {
+                                "bargein_default": true,
+                                "bargein_value": false,
+                                "bargein_speech": ""
+                            },
+                            "silence": {
+                                "silence_default": true,
+                                "silence_switch": true,
+                                "silence_duration": "5000",
+                                "slient_speech": "喂，您还在吗？请问还有什么可以帮助您吗？",
+                                "num_limit": "3",
+                                "stop_speech": "不好意思，您太久没有说话了，我这边先挂机了，如果有其他问题，请您重新拨打，谢谢"
+                            },
+                            "vad": {
+                                "vad_default": true,
+                                "vad_value": "500"
+                            },
+                            "vsp": {
+                                "vsp_default": true,
+                                "vsp_value": "暂无参数"
+                            }
+                        },
+                        "understandTab": {
+                            "acttableData": [],
+                            "actTypeValue": [],
+                            "isAct": false,
+                            "isParse": true,
+                            "isIntent": false,
+                            "intentTableData": [],
+                            "intentmodel": [],
+                            "returnvalue": [],
+                            "nointentName": "无意图",
+                            "parseTableData": [
+                                {
+                                    "parserData": {
+                                        "id": 1,
+                                        "parserId": "number@1",
+                                        "name": "数字",
+                                        "sourceId": 1,
+                                        "description": "解析输入文本中的数字",
+                                        "version": "1",
+                                        "serviceName": "",
+                                        "parserType": 0,
+                                        "userId": "sys",
+                                        "slotInfo": [
+                                            {
+                                                "id": 1,
+                                                "slotName": "number",
+                                                "slotDesc": "NUMBER：数字类型，支持整数与小数，小数建议在10位以内。例：3.14159"
+                                            }
+                                        ],
+                                        "created_time": "2019-12-26 20:20:26"
+                                    },
+                                    "slotName": [
+                                        {
+                                            "id": 1,
+                                            "slotName": "number",
+                                            "slotDesc": "NUMBER：数字类型，支持整数与小数，小数建议在10位以内。例：3.14159"
+                                        }
+                                    ],
+                                    "description": [
+                                        {
+                                            "id": 1,
+                                            "slotName": "number",
+                                            "slotDesc": "NUMBER：数字类型，支持整数与小数，小数建议在10位以内。例：3.14159"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "parsetypeValue": [
+                                "library"
+                            ],
+                            "parsenameValue": [
+                                "number@1"
+                            ]
+                        },
+                        "warnings": [
+                            {
+                                "type": "has_exit_connection"
+                            }
+                        ]
+                    },
+                    {
+                        "nodeId": "437724924085",
+                        "nodeName": "汇总",
+                        "nodeType": "dialogue_2.0",
+                        "edgeTab2": {
+                            "elseInto": "parseFailedEdge",
+                            "elseIntoNodeLabels": [],
+                            "elseIntoNodeLabelsEnable": false,
+                            "normalEdges": [
+                                {
+                                    "edge_type": "normal_2.0",
+                                    "edge_name": "跳转规则",
+                                    "edge_id": "5842082826916",
+                                    "to_node_id": null,
+                                    "to_node_labels": [],
+                                    "to_node_labels_enable": false,
+                                    "logic": "AND",
+                                    "actions": [
+                                        {
+                                            "source": "text",
+                                            "function": {
+                                                "function_name": "polarity_parser",
+                                                "content": {
+                                                    "key": "POLARITY",
+                                                    "key_suffix": "_437724924085"
+                                                }
+                                            },
+                                            "type": "parser",
+                                            "parser": "polarity_parser"
+                                        }
+                                    ],
+                                    "condition_rules": [],
+                                    "open": 0
+                                },
+                                {
+                                    "edge_type": "normal_2.0",
+                                    "edge_name": "跳转规则",
+                                    "edge_id": "6719081537673",
+                                    "to_node_id": "154401185406732",
+                                    "to_node_labels": [],
+                                    "to_node_labels_enable": false,
+                                    "logic": "AND",
+                                    "actions": [],
+                                    "condition_rules": [
+                                        {
+                                            "source": "global_info",
+                                            "function": {
+                                                "function_name": "contain_key",
+                                                "content": {
+                                                    "key": "POLARITY"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "source": "global_info",
+                                            "function": {
+                                                "function_name": "key_val_match",
+                                                "content": {
+                                                    "compare": "==",
+                                                    "key": "POLARITY",
+                                                    "val": "yes"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "edge_type": "normal_2.0",
+                                    "edge_name": "跳转规则",
+                                    "edge_id": "16438252740172",
+                                    "to_node_id": "30515936330046",
+                                    "to_node_labels": [],
+                                    "to_node_labels_enable": false,
+                                    "logic": "AND",
+                                    "actions": [],
+                                    "condition_rules": [
+                                        {
+                                            "source": "global_info",
+                                            "function": {
+                                                "function_name": "contain_key",
+                                                "content": {
+                                                    "key": "POLARITY"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "source": "global_info",
+                                            "function": {
+                                                "function_name": "key_val_match",
+                                                "content": {
+                                                    "compare": "==",
+                                                    "key": "POLARITY",
+                                                    "val": "no"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ],
+                            "useCommonEdge": true,
+                            "responseValue": "customRe",
+                            "elsethenSelect": 1,
+                            "dialogueLimit": 3,
+                            "exceedThenGoto": "0001",
+                            "exceedThenGotoLabels": [],
+                            "exceedThenGotoLabelsEnable": false
+                        },
+                        "dialogue2SettingTab": {
+                            "nodeName": "对话节点2.0",
+                            "parser": "none",
+                            "targetEntities": [],
+                            "skipIfKeyExist": [],
+                            "initialResponse": "您要入住的城市是: $global{city}, 酒店名称是: $global{hotelName}, 住$global{checkDays}晚， 请问您是否预定？\n",
+                            "repeatResponse": "",
+                            "rewindResponse": "",
+                            "parseFromThisNode": false,
+                            "skipDialogue": false,
+                            "failureResponse": "您要入住的城市是: $global{city}, 酒店名称是: $global{hotelName}, 住$global{checkDays}晚， 请问您是否预定？$global{POLARITY}\n"
+                        },
+                        "ttsInfo": {
+                            "bargein": {
+                                "bargein_default": true,
+                                "bargein_value": false,
+                                "bargein_speech": ""
+                            },
+                            "silence": {
+                                "silence_default": true,
+                                "silence_switch": true,
+                                "silence_duration": "5000",
+                                "slient_speech": "喂，您还在吗？请问还有什么可以帮助您吗？",
+                                "num_limit": "3",
+                                "stop_speech": "不好意思，您太久没有说话了，我这边先挂机了，如果有其他问题，请您重新拨打，谢谢"
+                            },
+                            "vad": {
+                                "vad_default": true,
+                                "vad_value": "500"
+                            },
+                            "vsp": {
+                                "vsp_default": true,
+                                "vsp_value": "暂无参数"
+                            }
+                        },
+                        "understandTab": {
+                            "acttableData": [],
+                            "actTypeValue": [],
+                            "isAct": false,
+                            "isParse": false,
+                            "isIntent": false,
+                            "intentTableData": [],
+                            "intentmodel": [],
+                            "returnvalue": [],
+                            "nointentName": "无意图",
+                            "parseTableData": [],
+                            "parsetypeValue": [],
+                            "parsenameValue": []
+                        },
+                        "warnings": [
+                            {
+                                "type": "has_exit_connection"
+                            }
+                        ]
+                    },
+                    {
+                        "nodeId": "154401185406732",
+                        "nodeName": "确认",
+                        "nodeType": "dialogue_2.0",
+                        "edgeTab2": {
+                            "normalEdges": [],
+                            "exceedThenGoto": "0001",
+                            "elseInto": "parseFailedEdge",
+                            "dialogueLimit": 3,
+                            "useCommonEdge": true
+                        },
+                        "dialogue2SettingTab": {
+                            "nodeName": "对话节点2.0",
+                            "parser": "none",
+                            "targetEntities": [],
+                            "skipIfKeyExist": [],
+                            "initialResponse": "好的，酒店已为您预定好了",
+                            "repeatResponse": "",
+                            "rewindResponse": "",
+                            "parseFromThisNode": false,
+                            "skipDialogue": false,
+                            "failureResponse": ""
+                        },
+                        "ttsInfo": {
+                            "bargein": {
+                                "bargein_default": true,
+                                "bargein_value": false,
+                                "bargein_speech": ""
+                            },
+                            "silence": {
+                                "silence_default": true,
+                                "silence_switch": true,
+                                "silence_duration": "5000",
+                                "slient_speech": "喂，您还在吗？请问还有什么可以帮助您吗？",
+                                "num_limit": "3",
+                                "stop_speech": "不好意思，您太久没有说话了，我这边先挂机了，如果有其他问题，请您重新拨打，谢谢"
+                            },
+                            "vad": {
+                                "vad_default": true,
+                                "vad_value": "500"
+                            },
+                            "vsp": {
+                                "vsp_default": true,
+                                "vsp_value": "暂无参数"
+                            }
+                        },
+                        "understandTab": {
+                            "acttableData": [],
+                            "intentTableData": [],
+                            "intentOption": [
+                                []
+                            ],
+                            "intentmodel": [],
+                            "intent": [],
+                            "returnvalue": [],
+                            "isIntent": false,
+                            "isAct": false,
+                            "isParse": false,
+                            "parseTableData": [],
+                            "parsetypeValue": [],
+                            "parsenameValue": []
+                        },
+                        "warnings": [
+                            {
+                                "type": "missing_failure_response_dialogue_2"
+                            },
+                            {
+                                "type": "has_exit_connection"
+                            }
+                        ]
+                    },
+                    {
+                        "nodeId": "30515936330046",
+                        "nodeName": "取消",
+                        "nodeType": "dialogue_2.0",
+                        "edgeTab2": {
+                            "normalEdges": [],
+                            "exceedThenGoto": "0001",
+                            "elseInto": "parseFailedEdge",
+                            "dialogueLimit": 3,
+                            "useCommonEdge": true
+                        },
+                        "dialogue2SettingTab": {
+                            "nodeName": "对话节点2.0_1",
+                            "parser": "none",
+                            "targetEntities": [],
+                            "skipIfKeyExist": [],
+                            "initialResponse": "好的，已为您取消",
+                            "repeatResponse": "",
+                            "rewindResponse": "",
+                            "parseFromThisNode": false,
+                            "skipDialogue": false,
+                            "failureResponse": ""
+                        },
+                        "ttsInfo": {
+                            "bargein": {
+                                "bargein_default": true,
+                                "bargein_value": false,
+                                "bargein_speech": ""
+                            },
+                            "silence": {
+                                "silence_default": true,
+                                "silence_switch": true,
+                                "silence_duration": "5000",
+                                "slient_speech": "喂，您还在吗？请问还有什么可以帮助您吗？",
+                                "num_limit": "3",
+                                "stop_speech": "不好意思，您太久没有说话了，我这边先挂机了，如果有其他问题，请您重新拨打，谢谢"
+                            },
+                            "vad": {
+                                "vad_default": true,
+                                "vad_value": "500"
+                            },
+                            "vsp": {
+                                "vsp_default": true,
+                                "vsp_value": "暂无参数"
+                            }
+                        },
+                        "understandTab": {
+                            "acttableData": [],
+                            "intentTableData": [],
+                            "intentOption": [
+                                []
+                            ],
+                            "intentmodel": [],
+                            "intent": [],
+                            "returnvalue": [],
+                            "isIntent": false,
+                            "isAct": false,
+                            "isParse": false,
+                            "parseTableData": [],
+                            "parsetypeValue": [],
+                            "parsenameValue": []
+                        },
+                        "warnings": [
+                            {
+                                "type": "missing_failure_response_dialogue_2"
+                            },
+                            {
+                                "type": "has_exit_connection"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "js_code": {},
+            "custom_parsers": {}
+        },
+        "taskLayouts": {
+            "15560167299200": {
+                "position": {
+                    "left": 224,
+                    "top": 60
+                }
+            },
+            "0001": {
+                "position": {
+                    "left": 10,
+                    "top": 50
+                }
+            },
+            "14597102603674": {
+                "position": {
+                    "left": 180,
+                    "top": 149
+                }
+            },
+            "20927034256215": {
+                "position": {
+                    "left": 186,
+                    "top": 305
+                }
+            },
+            "811354657150": {
+                "position": {
+                    "left": 177,
+                    "top": 448
+                }
+            },
+            "437724924085": {
+                "position": {
+                    "left": 172.91666666666663,
+                    "top": 584.4545454545455
+                }
+            },
+            "154401185406732": {
+                "position": {
+                    "left": 34,
+                    "top": 793.4545454545455
+                }
+            },
+            "30515936330046": {
+                "position": {
+                    "left": 342.91666666666663,
+                    "top": 792.4545454545455
+                }
+            }
+        },
+        "scenarioType": 0
+    }
+]
