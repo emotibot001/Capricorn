@@ -26,8 +26,8 @@ pip install -U bfengine
 如果比较慢，可以使用清华的pip源：-i https://pypi.tuna.tsinghua.edu.cn/simple
 要求Python 3.6以上,支持Linux,可以在CPU上运行
 
-```
 ## 使用方式
+```
 1.快速上手：问答管理、知识图谱
 ```python
 import bf_engine
