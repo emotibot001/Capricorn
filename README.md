@@ -4,7 +4,8 @@
 ## 目录
 * [安装方式](#安装方式)
 * [使用方式](#使用方式)
-* [Object Hierarchy](#Object Hierarchy)
+* [Object Hierarchy](#ObjectHierarchy)
+
 ---
 提供的功能有:
 * 创建BOT
