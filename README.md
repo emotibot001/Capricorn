@@ -25,32 +25,6 @@ pip install -U bfengine
 如果比较慢，可以使用清华的pip源：-i https://pypi.tuna.tsinghua.edu.cn/simple
 要求Python 3.6以上,支持Linux,可以在CPU上运行
 
-#### 获取启动脚本
-```
-# 获取启动脚本
-git clone ssh://git@gitlab.emotibot.com:10022/bf2020/bf-engine-quickstart.git
-
-# 进入安装脚本目录
-cd bf-engine-quickstart
-```
-
-#### BFEngine引擎(本地版)
-注意: 本地版需要执行以下步骤
-
-1.从磁盘或网络加载镜像包。由于镜像包过大，可通过以下方式获取
-```shell
-# 下载镜像包
-wget http://cloud.emotibot.com:50018/bfengine/bf-engine-images.zip 
--O bf-engine-images.zip
-
-# 解压镜像包
-unzip -o bf-engine-images.zip -d ./images
-```
-
-2.启动镜像包
-```shell
-# 启动镜像包
-./bin/bfengine.sh  #目前只支持linux系统
 ```
 ## 使用方式
 1.快速上手：问答管理、知识图谱
