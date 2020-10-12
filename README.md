@@ -13,6 +13,7 @@ pip install -U bfengine
 要求Python 3.6以上。
 
 ## 使用方式
+注: 示例代码可在sample目录下查看。
 ####  创建Bot
 
 ```
