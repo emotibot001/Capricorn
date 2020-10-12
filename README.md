@@ -23,7 +23,7 @@ bot = bf_engine.init()
 #### 问答管理
 ```
 # 训练问答语料
-bot.qa.train(data={"data": [{"sq": "竹间你好", "lq": ["竹间你好呀", "竹间你好吗"], "answer": "竹间是NLP宇宙第一"}]})
+bot.qa.train(data={"data": [{"sq": "竹间你好", "lq": ["竹间你好呀", "竹间你好吗"], "answer": "竹间是中文NLP No. 1"}]})
 
 # 问答出话
 print('qa出话：' +str(bot.qa.query('竹间你好')))
