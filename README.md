@@ -6,7 +6,8 @@ Capricorn是竹间BF2020的核心对话引擎，内嵌了竹间自研的中文�
 #### pip安装
 ```shell
 pip install -U bfengine
-# 按照requirements 安装
+
+# requirements 安装
 # pip install -U -r requirements.txt
 ```
 如果比较慢，可以使用清华的pip源：-i https://pypi.tuna.tsinghua.edu.cn/simple
