@@ -99,6 +99,61 @@ print("对话管理出话: " + bot.dm.query("是的").text)
 
 ```
 
+#### NER命名实体识别
+```
+import json
+
+import bf_engine
+
+# 机器人创建
+bot = bf_engine.create_bot()
+
+# 问答出话
+sentence = '我要去北京，帮我订下周三晚上8点的车票, 从上海出发，联系电话：13212341234'
+
+# 可获取可调用的的所有parser
+parsers = bot.ner.get_parsers()
+
+#  parsers中的parserId 可以通过
+results = bot.ner.predict(sentence=sentence, parsers=['transport', 'chrono', 'phone'])
+```
+#### 对话行为分类器
+
+```
+import bf_engine
+
+bot = bf_engine.init(url="http://172.16.103.195")
+
+sentence = '不好意思，我现在很忙。请稍后再给我打电话'
+
+# 使用对话行为行为分类器进行预测
+results = bot.act.predict(sentence=sentence)
+
+for result in results:
+    print('ACT： {}({})'.format(result.name, result.code))
+
+
+```
+
+#### 技能
+```
+import bf_engine
+from demo.utils.query import qprint
+
+
+# 机器人创建
+bot = bf_engine.init(url="http://172.16.103.195")
+
+# 打开技能: 防催宝典
+bot.skill.update_status(3, True)
+
+# 技能出话
+qprint("妈妈催我做作业怎么办", bot.skill)
+
+qprint("一句话让催婚的人闭嘴", bot.skill)
+
+```
+
 ## Object Hierarchy
 
 ```
