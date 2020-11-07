@@ -114,7 +114,7 @@ sentence = '我要去北京，帮我订下周三晚上8点的车票, 从上海�
 # 可获取可调用的的所有parser
 parsers = bot.ner.get_parsers()
 
-#  parsers中的parserId 可以通过
+#  parsers中的parserId 可以通过get_parsers接口获取
 results = bot.ner.predict(sentence=sentence, parsers=['transport', 'chrono', 'phone'])
 ```
 #### 对话行为分类器
