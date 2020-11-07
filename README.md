@@ -135,5 +135,15 @@ bf_engine
       *query
       *chat
       *test
+   -skill
+      *skill_list
+      *update_status
+      *query
+   -ner
+      *predict
+      *get_parsers
+   -act
+      *predict
+      *get_acts
 ```
 
