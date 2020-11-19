@@ -1,0 +1,7 @@
+[{"entity": "华为P40", "property": "价格", "value": "4488", "unit": "元"},
+                                       {"entity": "华为P40Pro", "property": "价格", "value": "5988", "unit": "元"},
+                                       {"entity": "华为P40", "property": "电池容量", "value": "3800", "unit": "毫安时"},
+                                       {"entity": "华为P40Pro", "property": "电池容量", "value": "4200", "unit": "毫安时"},
+                                       {"entity": "华为P40", "property": "拍照效果", "value": "可以满足您平时的拍照需求"},
+                                       {"entity": "华为P40Pro", "property": "拍照效果", "value": "基本可以用于专业摄影"}
+                                       ]
