@@ -3,6 +3,7 @@ Capricorn是竹间BF2020的核心对话引擎，内嵌了竹间自研的中文�
 通过Capricorn，您可以定制个性化的AI服务，打造个性化BOT平台，以及和已有系统做深度集成。并且在此之上，快速开发各类对话场景，例如客服服务，业务办理，企业助手，智能家居控制，语音技能等。
 
 ## 安装方式
+#Java版的安装使用在sample/java目录下查看。
 #### pip安装
 ```shell
 pip3 install -U -r requirements.txt
