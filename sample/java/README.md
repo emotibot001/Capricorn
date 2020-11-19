@@ -7,9 +7,9 @@ JDK1.8
 
 #### maven安装Jar包
 
-将bf-engine-0.0.2-SNAPSHOT.jar放到硬盘中，如：D:\bf-engine-0.0.2-SNAPSHOT.jar，执行以下成功后，bf-engine-0.0.2-SNAPSHOT.jar会自动添加到本地maven仓库中。
+将bf-engine-0.0.2-SNAPSHOT.jar和pom.xml放到硬盘中，如：D:\bf-engine-0.0.2-SNAPSHOT.jar和D:\pom.xml，执行以下成功后，bf-engine-0.0.2-SNAPSHOT.jar会自动添加到本地maven仓库中。
 ```
-mvn install:install-file -Dfile=D:\bf-engine-0.0.2-SNAPSHOT.jar -DgroupId=com.emotibot -DartifactId=bf-engine -Dversion=0.0.2-SNAPSHOT -Dpackaging=jar
+mvn install:install-file -Dfile=D:\bf-engine-0.0.2-SNAPSHOT.jar -DgroupId=com.emotibot -DartifactId=bf-engine -Dversion=0.0.2-SNAPSHOT -Dpackaging=jar -DpomFile=D:\pom.xml
 ```
 
 ## 使用方式
