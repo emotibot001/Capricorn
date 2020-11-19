@@ -1,6 +1,11 @@
+## 运行环境
+```
+JDK1.8
+```
 
 ## 安装方式
-#### maven安装
+
+#### maven安装Jar包
 
 将bf-engine-0.0.2-SNAPSHOT.jar放到硬盘中，如：D:\bf-engine-0.0.2-SNAPSHOT.jar，执行以下成功后，bf-engine-0.0.2-SNAPSHOT.jar会自动添加到本地maven仓库中。
 ```
@@ -16,6 +21,8 @@ mvn install:install-file -Dfile=D:\bf-engine-0.0.2-SNAPSHOT.jar -DgroupId=com.em
 	<version>0.0.2-SNAPSHOT</version>
 </dependency>
 ```
+
+
 
 #### 创建BOT
 ```
