@@ -123,7 +123,7 @@ results = bot.ner.predict(sentence=sentence, parsers=['transport', 'chrono', 'ph
 ```
 import bf_engine
 
-bot = bf_engine.init(url="http://172.16.103.195")
+bot = bf_engine.init()
 
 sentence = '不好意思，我现在很忙。请稍后再给我打电话'
 
@@ -143,7 +143,7 @@ from demo.utils.query import qprint
 
 
 # 机器人创建
-bot = bf_engine.init(url="http://172.16.103.195")
+bot = bf_engine.init()
 
 # 打开技能: 防催宝典
 bot.skill.update_status(3, True)
