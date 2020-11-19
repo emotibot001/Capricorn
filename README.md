@@ -15,7 +15,7 @@ pip3 install -U bfengine
 要求Python 3.6以上。
 
 ## 使用方式
-注: 示例代码可在sample目录下查看。
+注: 示例代码可在sample目录下查看。支持Java和Python版。 Java版的使用示例在sample/java目录下查看。
 ####  创建Bot
 
 ```
