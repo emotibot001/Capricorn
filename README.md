@@ -139,8 +139,6 @@ for result in results:
 #### 技能
 ```
 import bf_engine
-from demo.utils.query import qprint
-
 
 # 机器人创建
 bot = bf_engine.init()
@@ -149,10 +147,10 @@ bot = bf_engine.init()
 bot.skill.update_status(3, True)
 
 # 技能出话
-qprint("妈妈催我做作业怎么办", bot.skill)
+sentence = "妈妈催我做作业怎么办"
+answer = bot.skill.query(sentence)
 
-qprint("一句话让催婚的人闭嘴", bot.skill)
-
+print(answer.text)
 ```
 
 ## Object Hierarchy
