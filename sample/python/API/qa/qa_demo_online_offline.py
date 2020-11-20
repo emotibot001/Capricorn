@@ -11,6 +11,7 @@ print("appid: " + bot.app_id)
 bot.qa.train(data={"data":
     [{
         "sq": "谁是NLP宇宙第一",
+        "category_id": "-1",
         "lq": ["在NLP领域谁是第一名", "NLP第一名是哪家"],
         "answer": "竹间是NLP宇宙第一"
     }]}, append=False)
@@ -24,6 +25,7 @@ bot.qa.train(data={"data":
         {
             "sq": "谁是NLP宇宙第一",
             "lq": ["竹间你好呀", "竹间你好吗"],
+            "category_id": "-1",
             "answers": [
                 {"answer": "未来竹间是NLP宇宙第一","time_tag":"NLP混沌时间"},
                 {"answer": "竹间是NLP宇宙第一", "time_tag":"竹间成立时间"}

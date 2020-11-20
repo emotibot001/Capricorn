@@ -8,9 +8,7 @@ bot = bf_engine.init()
 print("appid: " + bot.app_id)
 
 # 机器人数据
-qalist  = bot.qa.qa_list()
-
-print("语料列表： " + str(json.dumps(qalist, ensure_ascii=False, indent=2)))
+print("语料列表： " + str(json.dumps(bot.qa.qa_list(), ensure_ascii=False, indent=2)))
 
 print('qa出话：' + str(bot.qa.query('竹间你好呀')))
 
@@ -19,6 +17,7 @@ question_id = bot.qa.update_question(
     {
         "id": 37,
         "sq": "谁是NLP宇宙第一",
+        "category_id": "-1",
         "tags": ["你好呢"],
         "lq": ["竹间你好呀", "竹间你好吗", "你好呀"],
         "answers": [

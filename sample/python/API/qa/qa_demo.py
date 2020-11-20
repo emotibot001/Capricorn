@@ -11,7 +11,8 @@ bot.qa.train(data={"data":
     [{
         "sq": "谁是NLP宇宙第一",
         "lq": ["在NLP领域谁是第一名", "NLP第一名是哪家"],
-        "answer": "竹间是NLP宇宙第一"
+        "answer": "竹间是NLP宇宙第一",
+        "category_id":"-1"
     }]}, append=False)
 
 # 问答出话
@@ -31,7 +32,8 @@ bot.qa.train(data={"data":
             "answers": [
                 {"answer": "未来竹间是NLP宇宙第一","time_tag":"NLP混沌时间"},
                 {"answer": "竹间是NLP宇宙第一", "time_tag":"竹间成立时间"}
-            ]
+            ],
+            "category_id":"-1"
         }
     ]},append=False)
 
@@ -42,7 +44,8 @@ bot.qa.train(data={"data":
             "sq": "竹间你好",
             "related": ["谁是NLP宇宙第一"],
             "lq": ["竹间你好呀", "竹间你好吗"],
-            "answer": "欢迎加入竹间"
+            "answer": "欢迎加入竹间",
+            "category_id":"-1"
         }
     ]}, append=True)
 
